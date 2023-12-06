@@ -63,7 +63,7 @@ public class MainSintactico {
         while (this.current != null && !this.current.getToken().getLexema().equals("Fin") ){
             NodoAST nodo  = VerificarTipoDeNodo();
             if(nodo == null){
-                return null;
+                break;
             }
             nodosHijosProgramas.add(nodo);
         }
@@ -122,13 +122,17 @@ public class MainSintactico {
         List<NodoAST> bodySi = new ArrayList<>();
         List<NodoAST> bodySino = new ArrayList<>();
         while (this.current != null && !this.current.getToken().getLexema().equals("FinSi")){
-            NodoAST nodoSi  = VerificarTipoDeNodo();
-            if(nodoSi == null){
-                String valorEsperado = "Finsi";
-                guardarError(valorEsperado);
-                return null;
+
+            if(!this.current.getToken().getLexema().equals("Sino")){
+                NodoAST nodoSi  = VerificarTipoDeNodo();
+                if(nodoSi == null){
+                    String valorEsperado = "Finsi";
+                    guardarError(valorEsperado);
+                    return null;
+                }
+                bodySi.add(nodoSi);
+
             }
-            bodySi.add(nodoSi);
 
             if(this.current.getToken().getLexema().equals("Sino")){
                 this.current = this.current.getSiguiente();
@@ -137,7 +141,8 @@ public class MainSintactico {
                     NodoAST nodoSino  = VerificarTipoDeNodo();
 
                     if(nodoSino == null){
-                        String valorEsperado = "Finsi";
+
+                        String valorEsperado = "FinSi";
                         guardarError(valorEsperado);
                         return null;
                     }
@@ -246,7 +251,12 @@ public class MainSintactico {
         }
         this.current = this.current.getSiguiente();
         if(this.current == null || !this.current.getToken().getTipo().equals(TipoToken.IDENTIFICADOR)){
-            manejadorErrores.agregarError("identificador");
+            if(this.current == null){
+                guardarError("identificador");
+                return null;
+            }
+            guardarError("identificador");
+
             return null;
         }
         String identificadorLeer;

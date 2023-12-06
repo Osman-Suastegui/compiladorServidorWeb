@@ -1,5 +1,9 @@
 Inicio
 Si a > b Entonces
+Sino
+
 FinSi
+
+a = b
 Fin
 
