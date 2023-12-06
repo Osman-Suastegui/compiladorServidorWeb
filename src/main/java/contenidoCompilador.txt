@@ -1,0 +1,5 @@
+Inicio
+Si a > b Entonces
+FinSi
+Fin
+
