@@ -1,10 +1,13 @@
 package demoSpringBoot.demo.sintactico.Sentences.Sent;
 
+import java.util.ArrayList;
+
 public class NodoEscribir extends NodoAST {
 
     private String contenidoEscribir;
 
     public NodoEscribir(String contenidoEscribir) {
+        super("NodoEscribir",new ArrayList<>());
         this.contenidoEscribir = contenidoEscribir;
     }
     @Override

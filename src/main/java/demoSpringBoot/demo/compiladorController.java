@@ -2,6 +2,9 @@ package demoSpringBoot.demo;
 
 import demoSpringBoot.demo.lexico.MainLexico;
 import demoSpringBoot.demo.lexico.tablaDeSimbolos.ManejadorErrores;
+import demoSpringBoot.demo.sintactico.Sentences.Sent.NodoAST;
+import demoSpringBoot.demo.sintactico.Sentences.Sent.NodoLeer;
+import demoSpringBoot.demo.sintactico.Sentences.Sent.NodoPrograma;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.BufferedWriter;
@@ -19,7 +22,7 @@ public class compiladorController {
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/compilar")
     public List<String> compilar(@RequestBody Map<String,String[][]> micodigo) throws Exception {
-
+        NodoPrograma.limpiarInstancia();
         String file = "C:\\Users\\osman\\OneDrive\\Desktop\\SpringBootApps\\demoSpringBoot\\demo\\src\\main\\java\\contenidoCompilador.txt";
 //        abre el archivo y escribe el codigo
         String[][] codigo = micodigo.get("codigo");
@@ -40,5 +43,12 @@ public class compiladorController {
         manejadorErrores.setErrores(new ArrayList<>());
         return misErrores;
     }
+
+//    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/obtenerArbolSintactico")
+    public NodoAST obtenerArbolSintactico(){
+        return NodoPrograma.obtenerInstancia();
+    }
+
 
 }

@@ -54,7 +54,7 @@ public class MainSintactico {
         // Validar que el programa comience con el token "inicio"
         if(!this.current.getToken().getLexema().equals("Inicio")){
             guardarError("Inicio");
-            return  new NodoPrograma(new ArrayList<>());
+            return NodoPrograma.obtenerInstancia(new ArrayList<>());
         }
         this.current = this.current.getSiguiente();
 
@@ -74,7 +74,7 @@ public class MainSintactico {
            return null;
        }
 
-        return new NodoPrograma(nodosHijosProgramas);
+        return NodoPrograma.obtenerInstancia(nodosHijosProgramas);
     }
 //    una funcion para verificar que tipo de AST ES
     public NodoAST VerificarTipoDeNodo(){
