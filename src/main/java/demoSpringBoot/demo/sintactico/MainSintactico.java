@@ -206,6 +206,7 @@ public class MainSintactico {
             NodoAST nodo  = VerificarTipoDeNodo();
             if(nodo == null){
                 guardarError("FinMientras");
+                return null;
             }
             body.add(nodo);
 //            this.current = this.current.getSiguiente();

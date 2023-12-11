@@ -1,26 +1,35 @@
 Inicio
-Si a > b Entonces
- Escribir "hola"
- Mientras c > d Entonces
-   c = y + d
- FinMientras   
-Sino
- Escribir "Entro al sino"
-FinSi
-y = c + d
-Leer asd
-Escribir "que onda"
 
 Mientras c > d Entonces
- Num miNumero
- miNumero = 5      
- Escribir "FIN MIENTRAS"
- Si d > b Entonces
+    Num miNumero
+    miNumero = 5      
+    Escribir "FIN MIENTRAS"
+    Si d > b Entonces
+    Const Cadena acd
     Leer acd
+
 Sino
-Escribir otraVariable
+    Escribir otraVariable
 FinSi
 
     
 FinMientras
+
+
+Si a > b Entonces
+     Escribir "hola"
+     Mientras c > d Entonces
+         c = y + d
+     FinMientras   
+Sino
+    Escribir "Entro al sino"
+FinSi
+y = c + d
+
+Leer asd
+Escribir "que onda"
+
+
 Fin
+
+
